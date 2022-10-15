@@ -70,4 +70,14 @@ export default class LinkedList {
 
 		temp.nextNode = null;
 	}
+
+	contains(value) {
+		let temp = this.HEAD;
+
+		while (temp != null && temp.value != value) {
+			temp = temp.nextNode;
+		}
+
+		return temp === null ? false : true;
+	}
 }
