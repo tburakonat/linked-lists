@@ -1,4 +1,10 @@
-import Node from './node';
+class Node {
+	constructor(value) {
+		this.value = value;
+		this.nextNode = null;
+	}
+}
+
 class LinkedList {
 	constructor(headNode) {
 		this.HEAD = headNode;
