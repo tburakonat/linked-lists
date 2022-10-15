@@ -38,4 +38,14 @@ export default class LinkedList {
 	head() {
 		return this.HEAD;
 	}
+
+	tail() {
+		let temp = this.HEAD;
+
+		while (temp.nextNode != null) {
+			temp = temp.nextNode;
+		}
+
+		return temp;
+	}
 }
