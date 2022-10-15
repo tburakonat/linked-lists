@@ -1,10 +1,4 @@
-class Node {
-	constructor(value) {
-		this.value = value;
-		this.nextNode = null;
-	}
-}
-
+import ListNode from './node';
 class LinkedList {
 	constructor(headNode) {
 		this.HEAD = headNode;
@@ -12,7 +6,7 @@ class LinkedList {
 	}
 
 	append(value) {
-		const newNode = new Node(value);
+		const newNode = new ListNode(value);
 
 		let temp = this.HEAD;
 
@@ -24,7 +18,7 @@ class LinkedList {
 	}
 
 	prepend(value) {
-		const newNode = new Node(value);
+		const newNode = new ListNode(value);
 		newNode.nextNode = this.HEAD;
 		this.HEAD = newNode;
 	}
@@ -111,32 +105,43 @@ class LinkedList {
 		output = output + '( null )';
 		return output;
 	}
+
+	insertAt(value, index) {
+		let temp = this.HEAD;
+		let nextOfNewNode;
+		let count = 1;
+		let newNode = new ListNode(value);
+
+		if (index == 0) {
+			newNode.nextNode = temp;
+			this.HEAD = newNode;
+			return;
+		}
+
+		while (temp != null) {
+			if (count == index) {
+				nextOfNewNode = temp.nextNode;
+				temp.nextNode = newNode;
+				newNode.nextNode = nextOfNewNode;
+				return;
+			}
+
+			count++;
+			temp = temp.nextNode;
+		}
+	}
+
+	removeAt(index) {
+		if (index === 0) {
+			const valueOfRemoved = this.HEAD.value;
+			this.HEAD = this.HEAD.nextNode;
+			return valueOfRemoved;
+		}
+
+		const nodeBeforeRemovedOne = this.at(index - 1);
+		const valueOfRemoved = nodeBeforeRemovedOne.nextNode.value;
+		nodeBeforeRemovedOne.nextNode = nodeBeforeRemovedOne.nextNode.nextNode;
+
+		return valueOfRemoved;
+	}
 }
-
-const person1 = new Node('Burak');
-
-const list = new LinkedList(person1);
-
-list.append('Berre');
-
-list.prepend('Selim');
-
-console.log(list);
-
-console.log('List size: ', list.size());
-
-console.log('List head: ', list.head());
-
-console.log('List tail: ', list.tail());
-
-console.log('Node at list index 0: ', list.at(0));
-
-list.pop();
-
-console.log(list);
-
-console.log(list.contains('Burak'));
-
-console.log(list.find('Burak'));
-
-console.log(list.toString());
