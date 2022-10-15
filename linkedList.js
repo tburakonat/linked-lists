@@ -1,5 +1,5 @@
 import Node from './node';
-export default class LinkedList {
+class LinkedList {
 	constructor(headNode) {
 		this.HEAD = headNode;
 		this.HEAD.nextNode = null;
@@ -51,7 +51,7 @@ export default class LinkedList {
 
 	at(index) {
 		let temp = this.HEAD;
-		let count = 1;
+		let count = 0;
 
 		while (temp.nextNode != null && count != index) {
 			count++;
@@ -106,3 +106,31 @@ export default class LinkedList {
 		return output;
 	}
 }
+
+const person1 = new Node('Burak');
+
+const list = new LinkedList(person1);
+
+list.append('Berre');
+
+list.prepend('Selim');
+
+console.log(list);
+
+console.log('List size: ', list.size());
+
+console.log('List head: ', list.head());
+
+console.log('List tail: ', list.tail());
+
+console.log('Node at list index 0: ', list.at(0));
+
+list.pop();
+
+console.log(list);
+
+console.log(list.contains('Burak'));
+
+console.log(list.find('Burak'));
+
+console.log(list.toString());
