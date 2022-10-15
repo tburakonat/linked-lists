@@ -80,4 +80,16 @@ export default class LinkedList {
 
 		return temp === null ? false : true;
 	}
+
+	find(value) {
+		let temp = this.HEAD;
+		let index = 0;
+
+		while (temp != null && temp.value != value) {
+			temp = temp.nextNode;
+			index++;
+		}
+
+		return temp === null ? null : index;
+	}
 }
