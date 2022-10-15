@@ -48,4 +48,16 @@ export default class LinkedList {
 
 		return temp;
 	}
+
+	at(index) {
+		let temp = this.HEAD;
+		let count = 1;
+
+		while (temp.nextNode != null && count != index) {
+			count++;
+			temp = temp.nextNode;
+		}
+
+		return temp;
+	}
 }
