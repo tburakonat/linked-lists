@@ -92,4 +92,17 @@ export default class LinkedList {
 
 		return temp === null ? null : index;
 	}
+
+	toString() {
+		let temp = this.HEAD;
+		let output = '';
+
+		while (temp != null) {
+			output = output + `( ${temp.value} ) -> `;
+			temp = temp.nextNode;
+		}
+
+		output = output + '( null )';
+		return output;
+	}
 }
