@@ -60,4 +60,14 @@ export default class LinkedList {
 
 		return temp;
 	}
+
+	pop() {
+		let temp = this.HEAD;
+
+		while (temp.nextNode.nextNode != null) {
+			temp = temp.nextNode;
+		}
+
+		temp.nextNode = null;
+	}
 }
